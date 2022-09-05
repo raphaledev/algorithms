@@ -1,0 +1,26 @@
+ALGORITHM read_sentence
+VAR
+    sentence := STRING;
+    nbWords, nbChars, nbVowels, i : INTEGER:=0;
+BEGIN
+    Read(sentence);
+    WHILE (sentence[i] <> '.') DO // We read until we find the final '.'
+        IF (sentence[i] <> ' ') THEN 
+            nbChars := nbChars + 1 // If it is not a space, it is a new character
+            IF (sentence[i] = 'a' or // Then we check if it is a vowel
+                sentence[i] = 'e' or
+                sentence[i] = 'i' or
+                sentence[i] = 'o' or
+                sentence[i] = 'u' or
+                sentence[i] = 'y' or) THEN
+                nbVowels := nbVowels + 1 // If it is a vowel then we update the count
+            END_IF
+        ELSE
+            nbWords := nbWords + 1 // A space means one more word
+        END_IF
+        i := i + 1 // We jump to the next character
+    END_WHILE
+    Write(nbChars)
+    Write(nbWords)
+    Write(nbVowels)
+END
